@@ -35,6 +35,8 @@ namespace FreeStars {
 
 class TestPlanet {
 public:
+	TestPlanet() : mHabTerra(10) {}
+
 	long GetHabValue(HabType ht) const		{ return mHabTerra[ht]; }
 	void SetHabValue(HabType ht, long v)	{ mHabTerra[ht] = v; }
 
