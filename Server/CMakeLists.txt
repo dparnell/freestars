@@ -46,8 +46,17 @@ SET(fsserver_SOURCES
     Wormhole.cpp
 )
 
+ENABLE_TESTING()
+
 add_executable(fs-server Main.cpp)
 
-add_library(fsserver Library.cpp ${fsserver_SOURCES})
+add_library(fsserver Library.cpp ${fsserver_SOURCES} )
+
+include(../cmake/CMakeRC.cmake)
+cmrc_add_resource_library(racetest-resources ALIAS test_race::rc NAMESPACE test_data test_data/MyModRules.xml test_data/default.r0)
+
+ADD_EXECUTABLE( test_race fsserver RaceTests.cpp "tests.h")
+ADD_TEST( race test_race )
 
 target_link_libraries(fs-server fsserver MersenneTwister tinyxml)
+target_link_libraries(test_race fsserver MersenneTwister tinyxml test_race::rc)
