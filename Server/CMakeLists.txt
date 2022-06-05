@@ -53,7 +53,7 @@ add_executable(fs-server Main.cpp)
 add_library(fsserver Library.cpp ${fsserver_SOURCES} )
 
 include(../cmake/CMakeRC.cmake)
-cmrc_add_resource_library(racetest-resources ALIAS test_race::rc NAMESPACE test_data test_data/MyModRules.xml test_data/default.r0)
+cmrc_add_resource_library(racetest-resources ALIAS test_race::rc NAMESPACE test_data test_data/MyModRules.xml test_data/default.r0 test_data/immune-joat.r0)
 
 ADD_EXECUTABLE( test_race fsserver RaceTests.cpp "tests.h")
 ADD_TEST( race test_race )
